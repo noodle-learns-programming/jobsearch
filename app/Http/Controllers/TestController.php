@@ -6,6 +6,7 @@ use App\User;
 use App\Page;
 use App\Character;
 use App\Skill;
+use DB;
 
 class TestController extends Controller {
 
@@ -142,5 +143,15 @@ class TestController extends Controller {
         Skill::create(["name" => "PHP"]);
         Skill::create(["name" => "Javascript"]);
         Skill::create(["name" => "MySQL"]);
+    }
+
+    public function cypher()
+    {
+        $rowset = DB::select('MATCH (n:User) RETURN n LIMIT 25');
+        foreach($rowset as $row)
+        {
+            var_dump($row['n']->getProperties());
+            //var_dump($row['n']->getProperty('identity'));
+        }
     }
 }

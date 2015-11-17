@@ -16,13 +16,14 @@ Route::get('/', 'WelcomeController@index');
 Route::get('home', 'HomeController@index');
 Route::get('angular','TestController@angular');
 Route::get('neo','TestController@neo');
+Route::get('cypher','TestController@cypher');
 Route::controllers([
     'auth' => 'Auth\AuthController',
     'password' => 'Auth\PasswordController',
 ]);
 Route::resource('jokes', 'JokesController');
 Route::group(['prefix' => 'api/v1'], function(){
-	Route::resource('jokes', 'API\V1\JokesController');
+    Route::resource('jokes', 'API\V1\JokesController');
 });
 Route::group(['prefix' => 'api/v1'], function()
 {
