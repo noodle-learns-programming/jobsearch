@@ -148,10 +148,14 @@ class TestController extends Controller {
     public function cypher()
     {
         $rowset = DB::select('MATCH (n:User) RETURN n LIMIT 25');
+        $result = [];
         foreach($rowset as $row)
         {
-            var_dump($row['n']->getProperties());
-            //var_dump($row['n']->getProperty('identity'));
+            $result[] = $row['n']->getProperties();
         }
+        return $result;
     }
+
+
+    
 }
